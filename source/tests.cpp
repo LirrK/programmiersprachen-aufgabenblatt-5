@@ -1,5 +1,6 @@
 #define CATCH_CONFIG_RUNNER
 #include <catch.hpp>
+#include "mat2.hpp"
 #include "vec2.hpp"
 
 Vec2 def;
@@ -19,8 +20,9 @@ Vec2 plus = v3 + v5;
 Vec2 minus = v3 - v5;
 Vec2 times = v3 * 3.0f;
 Vec2 divided = v8 / 2.0f;
+Vec2 timesR = 3 * v3;
 
-TEST_CASE("Describe_vec2, [vec2]") {
+TEST_CASE("Describe_Vec2, [Vec2]") {
   REQUIRE(def.x == 0.0f);
   REQUIRE(def.y == 0.0f);
   REQUIRE(v1.x == Approx(5.1f));
@@ -39,10 +41,32 @@ TEST_CASE("Describe_vec2, [vec2]") {
   REQUIRE(minus.y == 0.0f);  
   REQUIRE(times.x == -9.0f);
   REQUIRE(times.y == 15.0f);
+  REQUIRE(timesR.x == -9.0f);
+  REQUIRE(timesR.y == 15.0f);
   REQUIRE(divided.x == 2.0f);
   REQUIRE(divided.y == 6.0f);
 }
 
+Mat2 defM;
+Mat2 m1{1, 2, 3, 4};
+Mat2 m2{5, 6, 7, 8};
+Mat2 neww = m1 *= m2;
+Mat2 freefunc = neww * defM;
+
+TEST_CASE("Describe_Mat2, [Mat2]") {
+  REQUIRE(defM.e_00 == 1);
+  REQUIRE(defM.e_10 == 0);
+  REQUIRE(defM.e_01 == 0);
+  REQUIRE(defM.e_11 == 1);
+  REQUIRE(neww.e_00 == 19);
+  REQUIRE(neww.e_10 == 22);
+  REQUIRE(neww.e_01 == 43);
+  REQUIRE(neww.e_11 == 50);
+  REQUIRE(freefunc.e_00 == 19);
+  REQUIRE(freefunc.e_10 == 22);
+  REQUIRE(freefunc.e_01 == 43);
+  REQUIRE(freefunc.e_11 == 50);
+}
 
 
 int main(int argc, char *argv[])
