@@ -15,6 +15,8 @@ struct Mat2 {
     //TODO (in mat2.cpp) Definition v. operator *=
     Mat2& operator*=(Mat2 const& m);
 
+    float calcDet(Mat2 const& m);
+
 };
 
 //TODO (in mat2.cpp) Definition v. operator *
