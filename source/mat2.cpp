@@ -14,8 +14,8 @@ Mat2& Mat2::operator*=(Mat2 const& m) {
     return *this;
 }
 
-float Mat2::calcDet(Mat2 const& m) {
-    float det = m.e_00 * m.e_11 - m.e_10 * m.e_10;
+float Mat2::det() const {
+    float det = e_00 * e_11 - e_10 * e_10;
 
     return det;
 }

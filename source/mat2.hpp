@@ -15,11 +15,16 @@ struct Mat2 {
     //TODO (in mat2.cpp) Definition v. operator *=
     Mat2& operator*=(Mat2 const& m);
 
-    float calcDet(Mat2 const& m);
+    float det() const;
 
 };
 
 //TODO (in mat2.cpp) Definition v. operator *
 Mat2 operator*(Mat2 const& m1, Mat2 const& m2);
+
+//Inverse berechnen und Transponieren
+Mat2 inverse(Mat2 const& m);
+Mat2 transpose(Mat2 const% m);
+Mat2 make_rotation_mat2(float phi);
 
 #endif //MAT2_HPP
