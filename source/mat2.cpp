@@ -1,4 +1,6 @@
 #include "mat2.hpp"
+#include "vec2.hpp"
+#include <cmath>
 
 Mat2& Mat2::operator*=(Mat2 const& m) {
     float te_00 = e_00;
@@ -27,6 +29,44 @@ Mat2 operator*(Mat2 const& m1, Mat2 const& m2) {
     newMat.e_10 = m1.e_00 * m2.e_10 + m1.e_10 * m2.e_11;
     newMat.e_01 = m1.e_01 * m2.e_00 + m1.e_11 * m2.e_01;
     newMat.e_11 = m1.e_01 * m2.e_10 + m1.e_11 * m2.e_11;
+
+    return newMat;
+}
+
+
+Vec2 operator*(Mat2 const& m, Vec2 const& v) {
+    Vec2 newVec;
+    newVec.x = m.e_00 * v.x + m.e_10 * v.y;
+    newVec.y = m.e_01 * v.x + m.e_11 * v.y;
+
+    return newVec;
+}
+
+Mat2 inverse(Mat2 const& m) {
+    Mat2 newMat;
+    float mult = 1 / m.e_00 * m.e_11 - m.e_10 * m.e_01;
+
+    newMat.e_00 = mult * m.e_11;
+    newMat.e_10 = mult * - m.e_10;
+    newMat.e_01 = mult * - m.e_01;
+    newMat.e_11 = mult * m.e_00;
+
+    return newMat;
+}
+
+Mat2 transpose(Mat2 const& m) {
+    Mat2 newMat;
+    
+    newMat.e_00 = m.e_00;
+    newMat.e_01 = m.e_10;
+    newMat.e_10 = m.e_01;
+    newMat.e_11 = m.e_11;
+
+    return newMat;
+}
+
+Mat2 make_rotation_mat2(float phi) {
+    Mat2 newMat{cos(phi), -sin(phi), sin(phi), -cos(phi)};
 
     return newMat;
 }
