@@ -2,6 +2,9 @@
 #include <catch.hpp>
 #include "mat2.hpp"
 #include "vec2.hpp"
+#include "rect.hpp"
+#include "circle.hpp"
+#include "color.hpp"
 
 TEST_CASE("Vec initialisation, [Vec2]") {
   Vec2 def;
@@ -20,19 +23,19 @@ TEST_CASE("Vec member funcs, [Vec2]") {
   Vec2 v5{-3.0f, 5.0f};
   Vec2 v6{2.0f, 3.0f};
   Vec2 v7{2.0f, 4.0f};
-  Vec2 plusEqual = v2 += v3;
-  Vec2 minusEqual = v4 -= v5;
-  Vec2 timeEqual = v6 *= 2;
-  Vec2 divEqual = v7 /= 2;
+  v2 += v3;
+  v4 -= v5;
+  v6 *= 2;
+  v7 /= 2;
 
-  REQUIRE(plusEqual.x == -1.0f);
-  REQUIRE(plusEqual.y == 8.0f);
-  REQUIRE(minusEqual.x == 5.0f);
-  REQUIRE(minusEqual.y == -2.0f);
-  REQUIRE(timeEqual.x == 4.0f);
-  REQUIRE(timeEqual.y == 6.0f);
-  REQUIRE(divEqual.x == 1.0f);
-  REQUIRE(divEqual.y == 2.0f);
+  REQUIRE(v2.x == -1.0f);
+  REQUIRE(v2.y == 8.0f);
+  REQUIRE(v4.x == 5.0f);
+  REQUIRE(v4.y == -2.0f);
+  REQUIRE(v6.x == 4.0f);
+  REQUIRE(v6.y == 6.0f);
+  REQUIRE(v7.x == 1.0f);
+  REQUIRE(v7.y == 2.0f);
 }
 TEST_CASE("Vec free funcs, [Vec2]") {
   Vec2 v3{-3.0f, 5.0f};
@@ -66,33 +69,40 @@ TEST_CASE("Mat initialisation, [Mat2]") {
   REQUIRE(defM.e_11 == 1);
 }
 
-TEST_CASE("Mat manipulation, [Mat2]") {
+TEST_CASE("Mat operators, [Mat2]") {
   Mat2 defM;
   Mat2 m1{1, 2, 3, 4};
   Mat2 m2{5, 6, 7, 8};
-  Mat2 neww = m1 *= m2;
-  Mat2 freefunc = neww * defM;
+  m1 *= m2;
+  Mat2 freefunc = m1 * defM;
   float test = defM.det();
-  Mat2 inv{1, 2, 3, 4};
-  inverse(inv);
-  Mat2 trans{1, 2, 3, 4};
-  transpose(trans);
   
-  REQUIRE(neww.e_00 == 19);
-  REQUIRE(neww.e_10 == 22);
-  REQUIRE(neww.e_01 == 43);
-  REQUIRE(neww.e_11 == 50);
+  REQUIRE(m1.e_00 == 19);
+  REQUIRE(m1.e_10 == 22);
+  REQUIRE(m1.e_01 == 43);
+  REQUIRE(m1.e_11 == 50);
   REQUIRE(freefunc.e_00 == 19);
   REQUIRE(freefunc.e_10 == 22);
   REQUIRE(freefunc.e_01 == 43);
   REQUIRE(freefunc.e_11 == 50);
   REQUIRE(test == 1);
-  REQUIRE(inv.e_00 == -2);
-  REQUIRE(inv.e_10 == 1);
-  REQUIRE(inv.e_01 == 1.5);
-  REQUIRE(inv.e_11 == -0.5);
 }
 
+TEST_CASE("Mat manipulation, [MAT2]") {
+  Mat2 m1{2, 3, 5, 3};
+  Mat2 trans = transpose(m1);
+  Mat2 m2{2, 4, 4, 6};
+  Mat2 inv = inverse(m2);
+
+  REQUIRE(trans.e_00 == 2);
+  REQUIRE(trans.e_10 == 5);
+  REQUIRE(trans.e_01 == 3);
+  REQUIRE(trans.e_11 == 3);
+  REQUIRE(inv.e_00 == -1.5);
+  REQUIRE(inv.e_10 == 1);
+  REQUIRE(inv.e_01 == 1);
+  REQUIRE(inv.e_11 == -0.5);
+}
 
 int main(int argc, char *argv[])
 {
