@@ -93,6 +93,8 @@ TEST_CASE("Mat manipulation, [MAT2]") {
   Mat2 trans = transpose(m1);
   Mat2 m2{2, 4, 4, 6};
   Mat2 inv = inverse(m2);
+  Mat2 m3{1, 1, 1, 1};
+  Mat2 rot = make_rotation_mat2(1);
 
   REQUIRE(trans.e_00 == 2);
   REQUIRE(trans.e_10 == 5);
@@ -102,6 +104,10 @@ TEST_CASE("Mat manipulation, [MAT2]") {
   REQUIRE(inv.e_10 == 1);
   REQUIRE(inv.e_01 == 1);
   REQUIRE(inv.e_11 == -0.5);
+  REQUIRE(rot.e_00 == Approx(0.5403f));
+  REQUIRE(rot.e_10 == Approx(-0.84149f));
+  REQUIRE(rot.e_01 == Approx(0.84149f));
+  REQUIRE(rot.e_11 == Approx(-0.5403f));
 }
 
 int main(int argc, char *argv[])
