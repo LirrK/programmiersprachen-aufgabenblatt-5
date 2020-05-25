@@ -3,6 +3,7 @@
 
 #include "color.hpp"
 #include "vec2.hpp"
+#include "window.hpp"
 
 class Rect {
     public:
@@ -19,6 +20,8 @@ class Rect {
         {}
             
         float circumference() const;
+
+        void draw(Window const& w, bool highlight) const;
         
     private:
         Vec2 min_;
