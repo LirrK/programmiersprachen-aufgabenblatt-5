@@ -4,7 +4,6 @@
 #include "vec2.hpp"
 #include "rect.hpp"
 #include "circle.hpp"
-#include "color.hpp"
 
 TEST_CASE("Vec initialisation, [Vec2]") {
   Vec2 def;
@@ -88,7 +87,7 @@ TEST_CASE("Mat operators, [Mat2]") {
   REQUIRE(test == 1);
 }
 
-TEST_CASE("Mat manipulation, [MAT2]") {
+TEST_CASE("Mat manipulation, [Mat2]") {
   Mat2 m1{2, 3, 5, 3};
   Mat2 trans = transpose(m1);
   Mat2 m2{2, 4, 4, 6};
@@ -108,6 +107,16 @@ TEST_CASE("Mat manipulation, [MAT2]") {
   REQUIRE(rot.e_10 == Approx(-0.84149f));
   REQUIRE(rot.e_01 == Approx(0.84149f));
   REQUIRE(rot.e_11 == Approx(-0.5403f));
+}
+
+TEST_CASE("Shape circumference, [Circle/Rect]") {
+  Circle c{};
+  Rect r{};
+  float rect = r.circumference();
+  float circ = c.circumference();
+
+  REQUIRE(rect == 4);
+  REQUIRE(circ == Approx(6.28319f));
 }
 
 int main(int argc, char *argv[])
