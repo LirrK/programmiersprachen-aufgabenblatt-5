@@ -1,4 +1,7 @@
 #include "window.hpp"
+#include "rect.hpp"
+#include "circle.hpp"
+#include "color.hpp"
 #include <GLFW/glfw3.h>
 #include <utility>
 #include <cmath>
@@ -12,6 +15,14 @@ int main(int argc, char* argv[])
     if (win.get_key(GLFW_KEY_ESCAPE) == GLFW_PRESS) {
       win.close();
     }
+
+    Vec2 v1{40, 40};
+    Vec2 v2{120, 120};
+    Color red{1, 0, 0};
+    Rect rectangle{v1, v2, red};
+    rectangle.draw(win, 1);
+
+    
 
     bool left_pressed = win.get_mouse_button(GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS;
 
