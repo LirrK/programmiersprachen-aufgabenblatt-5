@@ -33,7 +33,6 @@ Mat2 operator*(Mat2 const& m1, Mat2 const& m2) {
     return newMat;
 }
 
-
 Vec2 operator*(Mat2 const& m, Vec2 const& v) {
     Vec2 newVec;
     newVec.x = m.e_00 * v.x + m.e_10 * v.y;
@@ -44,11 +43,11 @@ Vec2 operator*(Mat2 const& m, Vec2 const& v) {
 
 Mat2 inverse(Mat2 const& m) {
     Mat2 newMat;
-    float mult = 1 / m.e_00 * m.e_11 - m.e_10 * m.e_01;
+    float mult = 1 / (m.e_00 * m.e_11 - m.e_10 * m.e_01);
 
     newMat.e_00 = mult * m.e_11;
-    newMat.e_10 = mult * - m.e_10;
-    newMat.e_01 = mult * - m.e_01;
+    newMat.e_10 = -mult * m.e_10;
+    newMat.e_01 = -mult * m.e_01;
     newMat.e_11 = mult * m.e_00;
 
     return newMat;
@@ -65,8 +64,8 @@ Mat2 transpose(Mat2 const& m) {
     return newMat;
 }
 
-Mat2 make_rotation_mat2(float phi) {
-    Mat2 newMat{cos(phi), -sin(phi), sin(phi), -cos(phi)};
+Mat2 make_rotation_mat2(float s) {
+    Mat2 newMat{cos(s), -sin(s), sin(s), -cos(s)};
 
     return newMat;
 }

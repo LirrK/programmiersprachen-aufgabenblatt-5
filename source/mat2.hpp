@@ -13,11 +13,9 @@ struct Mat2 {
     float e_01 = 0.0f;
     float e_11 = 1.0f;
 
-    //TODO (in mat2.cpp) Definition v. operator *=
     Mat2& operator*=(Mat2 const& m);
 
     float det() const;
-
 };
 
 //TODO (in mat2.cpp) Definition v. operator *
