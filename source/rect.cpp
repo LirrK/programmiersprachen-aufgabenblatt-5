@@ -28,7 +28,7 @@ void Rect::draw(Window const& w, float thickness, bool highlight = true) const {
     }
 }
 
-bool Rect::is_inside(Window const& w, Vec2 const& v) {
+bool Rect::is_inside(Window const& w, Vec2 const& v) const {
     bool itis = false;
     if (min_.x < v.x && v.x < max_.x) {
         if (min_.y < v.y && v.y < max_.y) {
