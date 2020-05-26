@@ -15,17 +15,38 @@ int main(int argc, char* argv[])
     if (win.get_key(GLFW_KEY_ESCAPE) == GLFW_PRESS) {
       win.close();
     }
-
-    Vec2 v1{40, 40};
-    Vec2 v2{120, 120};
     Color red{1, 0, 0};
-    Rect rectangle{v1, v2, red};
-    rectangle.draw(win, 1);
-
-    Vec2 c1{400, 500};
     Color green{0, 1, 0};
+    Color blue{0, 0, 1};
+
+    Vec2 v1{150, 500};
+    Vec2 v2{400, 200};
+    Rect rectangle{v1, v2, red};
+    rectangle.draw(win, 20, 1);
+
+    Vec2 v3{150, 600};
+    Vec2 v4{400, 20};
+    Rect rectangletwo{v3, v4, red};
+    rectangletwo.draw(win, 20, 1);
+
+    Vec2 v5{450, 600};
+    Vec2 v6{50, 50};
+    Rect rectanglethree{v5, v6, red};
+    rectanglethree.draw(win, 15, 1);
+
+    Vec2 c1{150, 220};
     Circle circ{c1, 100, green};
-    circ.draw(win, 1);
+    circ.draw(win, 20, 1);
+
+    Circle circctr{c1, 20, blue};
+    circctr.draw(win, 20, 1);
+
+    Vec2 c2{450, 220};
+    Circle circ2{c2, 150, blue};
+    circ2.draw(win, 15, 1);
+
+    Circle circ2ctr{c2, 10, green};
+    circ2ctr.draw(win, 10, 1);
 
     bool left_pressed = win.get_mouse_button(GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS;
 
