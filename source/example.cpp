@@ -19,15 +19,16 @@ int main(int argc, char* argv[])
     Color green{0, 1, 0};
     Color blue{0, 0, 1};
 
-    Vec2 v1{150, 500};
-    Vec2 v2{400, 200};
+    Vec2 v1{150, 200};
+    Vec2 v2{400, 500};
     Rect rectangle{v1, v2, red};
     rectangle.draw(win, 20, 1);
 
-    Vec2 v3{150, 600};
-    Vec2 v4{400, 20};
-    Rect rectangletwo{v3, v4, red};
-    rectangletwo.draw(win, 20, 1);
+    Vec2 outvec{200, 400};
+    bool isit = rectangle.is_inside(win, outvec);
+
+    std::string insideedition = "Is it really inside? " + std::to_string(isit);
+    win.draw_text(620, 100, 20, insideedition);
 
     Vec2 v5{450, 600};
     Vec2 v6{50, 50};
