@@ -41,6 +41,11 @@ int main(int argc, char* argv[])
 
     Circle circctr{c1, 20, blue};
     circctr.draw(win, 20, 1);
+    
+    bool isitcirc = circ.is_inside(win, c1);
+
+    std::string insideeditione = "Is it really inside Circ? " + std::to_string(isitcirc);
+    win.draw_text(620, 300, 20, insideeditione);
 
     Vec2 c2{450, 220};
     Circle circ2{c2, 150, blue};
