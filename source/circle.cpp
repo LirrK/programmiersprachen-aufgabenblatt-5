@@ -35,6 +35,18 @@ void Circle::draw(Window const& w, float thickness, bool highlight = true) const
             res.y = rotation.y + center_.y;
             w.draw_point(res.x, res.y, color_.r, color_.g, color_.b);
         }
+    }   
+}
+
+bool Circle::is_inside(Window const& w, Vec2 const& v) const {
+    bool isit = false;
+    Vec2 P{(v.x - center_.x), (v.y - center_.y)};
+    int px = P.x;
+    int py = P.y;
+    float l = sqrt(px^2 + py^2);
+    float r = radius_;
+    if (r > l) {
+        isit = true;
     }
-    
+    return isit;
 }
