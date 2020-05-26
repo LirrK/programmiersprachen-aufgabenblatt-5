@@ -22,6 +22,7 @@ class Rect {
         float circumference() const;
 
         void draw(Window const& w, bool highlight) const;
+        void draw(Window const& w, float thickness, bool highlight) const;
         
     private:
         Vec2 min_;
