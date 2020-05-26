@@ -23,6 +23,8 @@ class Rect {
 
         void draw(Window const& w, bool highlight) const;
         void draw(Window const& w, float thickness, bool highlight) const;
+
+        bool is_inside(Window const& w, Vec2 const& v);
         
     private:
         Vec2 min_;
