@@ -22,7 +22,10 @@ int main(int argc, char* argv[])
     Rect rectangle{v1, v2, red};
     rectangle.draw(win, 1);
 
-    
+    Vec2 c1{400, 500};
+    Color green{0, 1, 0};
+    Circle circ{c1, 100, green};
+    circ.draw(win, 1);
 
     bool left_pressed = win.get_mouse_button(GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS;
 
