@@ -25,7 +25,7 @@ int main(int argc, char* argv[])
     rectangle.draw(win, 20, 1);
 
     Vec2 outvec{200, 400};
-    bool isit = rectangle.is_inside(win, outvec);
+    bool isit = rectangle.is_inside(outvec);
 
     std::string insideedition = "Is it really inside? " + std::to_string(isit);
     win.draw_text(620, 100, 20, insideedition);
@@ -42,7 +42,7 @@ int main(int argc, char* argv[])
     Circle circctr{c1, 20, blue};
     circctr.draw(win, 20, 1);
     
-    bool isitcirc = circ.is_inside(win, c1);
+    bool isitcirc = circ.is_inside(c1);
 
     std::string insideeditione = "Is it really inside Circ? " + std::to_string(isitcirc);
     win.draw_text(620, 300, 20, insideeditione);
