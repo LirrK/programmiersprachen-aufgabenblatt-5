@@ -10,7 +10,7 @@ float Circle::circumference() const {
     float res;
     res = M_PI * (2 * radius_);
     return res;
-}
+};
 
 void Circle::draw(Window const& w, bool highlight = true) const {
     Vec2 res;
@@ -22,7 +22,7 @@ void Circle::draw(Window const& w, bool highlight = true) const {
         res.y = rotation.y + center_.y;
         w.draw_point(res.x, res.y, color_.r, color_.g, color_.b);
     }
-}
+};
 
 void Circle::draw(Window const& w, float thickness, bool highlight = true) const {
     Vec2 res;
@@ -36,13 +36,28 @@ void Circle::draw(Window const& w, float thickness, bool highlight = true) const
             w.draw_point(res.x, res.y, color_.r, color_.g, color_.b);
         }
     }   
-}
+};
 
-bool Circle::is_inside(Window const& w, Vec2 const& v) const {
+bool Circle::is_inside(Vec2 const& v) const {
     bool isit = false;
     Vec2 P{(v.x - center_.x), (v.y - center_.y)};
     int px = P.x;
     int py = P.y;
+    float l = sqrt(px^2 + py^2);
+    float r = radius_;
+    if (r > l) {
+        isit = true;
+    }
+    return isit;
+};
+
+bool Circle::is_inside(Window const& w) const {
+    bool isit = false;
+    std::pair<float, float> pair = w.mouse_position();
+    Vec2 ptr{pair.first, pair.second};
+    Vec2 ptrRel{(ptr.x - center_.x), (ptr.y - center_.y)};
+    int px = ptrRel.x;
+    int py = ptrRel.y;
     float l = sqrt(px^2 + py^2);
     float r = radius_;
     if (r > l) {
