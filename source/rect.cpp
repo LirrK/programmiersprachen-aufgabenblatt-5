@@ -28,7 +28,7 @@ void Rect::draw(Window const& w, float thickness, bool highlight = true) const {
     }
 }
 
-bool Rect::is_inside(Window const& w, Vec2 const& v) const {
+bool Rect::is_inside(Vec2 const& v) const {
     bool itis = false;
     if (min_.x < v.x && v.x < max_.x) {
         if (min_.y < v.y && v.y < max_.y) {
@@ -36,8 +36,16 @@ bool Rect::is_inside(Window const& w, Vec2 const& v) const {
         }
     }
     return itis;
-    
-    
-    auto position = w.mouse_position();
-    
+}
+
+bool Rect::is_inside(Window const& w) const {
+    bool isit = false;
+    std::pair<float, float> pair = w.mouse_position();
+    Vec2 ptr{pair.first, pair.second};
+    if (min_.x < ptr.x && ptr.x < max_.x) {
+        if (min_.y < ptr.y && ptr.y < max_.y) {
+            isit = true;
+        }
+    }
+    return isit;
 }
