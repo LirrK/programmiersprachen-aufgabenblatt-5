@@ -24,6 +24,10 @@ class Circle {
         void draw(Window const& w, bool highlight) const;
         void draw(Window const& w, float thickness, bool highlight) const;
 
+        void drawSec(Window const& w) const;
+        void drawMin(Window const& w) const;
+        void drawHr(Window const& w) const;
+
         bool is_inside(Vec2 const& v) const;
         bool is_inside(Window const& w) const;
     private:
