@@ -106,7 +106,7 @@ TEST_CASE("Mat manipulation, [Mat2]") {
   REQUIRE(rot.e_00 == Approx(0.5403f));
   REQUIRE(rot.e_10 == Approx(-0.84149f));
   REQUIRE(rot.e_01 == Approx(0.84149f));
-  REQUIRE(rot.e_11 == Approx(-0.5403f));
+  REQUIRE(rot.e_11 == Approx(0.5403f));
 }
 
 TEST_CASE("Shape circumference, [Circle/Rect]") {
