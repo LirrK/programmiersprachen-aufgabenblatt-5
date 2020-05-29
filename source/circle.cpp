@@ -12,40 +12,25 @@ float Circle::circumference() const {
     return res;
 };
 
-void Circle::draw(Window const& w, bool highlight = true) const {
-    Vec2 res;
+void Circle::draw(Window const& w, float thickness, bool highlight = true) const {
     Vec2 turnit{0, radius_};
     for (int i = 0; i < 360; i++) {
         float bogen = (((2 * M_PI) / 360) * i);
+        float bogenPlus = ((2* M_PI) / 360) * i + 1;
         Vec2 rotation = make_rotation_mat2(bogen) * turnit;
-        res.x = rotation.x + center_.x;
-        res.y = rotation.y + center_.y;
-        w.draw_point(res.x, res.y, color_.r, color_.g, color_.b);
+        Vec2 rotationPlus = make_rotation_mat2(bogenPlus) * turnit;
+        w.draw_line((rotation.x + center_.x), (rotation.y + center_.y), (rotationPlus.x + center_.x), (rotationPlus.y + center_.y), color_.r, color_.g, color_.b, thickness);
     }
-};
-
-void Circle::draw(Window const& w, float thickness, bool highlight = true) const {
-    Vec2 res;
-    for (int i = 0; i < thickness; i++) {
-        Vec2 turnit{0, radius_ + i};
-        for (int i = 0; i < 360; i++) {
-            float bogen = (((2 * M_PI) / 360) * i);
-            Vec2 rotation = make_rotation_mat2(bogen) * turnit;
-            res.x = rotation.x + center_.x;
-            res.y = rotation.y + center_.y;
-            w.draw_point(res.x, res.y, color_.r, color_.g, color_.b);
-        }
-    }   
 };
 
 void Circle::drawSec(Window const& w) const {
     Vec2 res;
     Vec2 turnit{0, radius_};
     float i = w.get_time();
-    float bogen = - (((2 * M_PI) / 60) * i);
+    float bogen = (((2 * M_PI) / 60) * i);
     Vec2 rotation = make_rotation_mat2(bogen) * turnit;
-    res.x = rotation.x + center_.x;
-    res.y = rotation.y + center_.y;
+    res.x = - rotation.x + center_.x;
+    res.y = - rotation.y + center_.y;
     w.draw_line(center_.x, center_.y, res.x, res.y, color_.r, color_.g, color_.b);
 }
 
@@ -54,23 +39,23 @@ void Circle::drawMin(Window const& w) const {
     Vec2 turnit{0, radius_ - 5};
     float i = w.get_time();
     int mnt = i / 60;
-    float bogen = - (((2 * M_PI) / 60) * mnt);
+    float bogen = (((2 * M_PI) / 60) * mnt);
     Vec2 rotation = make_rotation_mat2(bogen) * turnit;
-    res.x = rotation.x + center_.x;
-    res.y = rotation.y + center_.y;
+    res.x = - rotation.x + center_.x;
+    res.y = - rotation.y + center_.y;
     w.draw_line(center_.x, center_.y, res.x, res.y, 1, 0, 0);
 }
 
 void Circle::drawHr(Window const& w) const {
     Vec2 res;
     Vec2 turnit{0, radius_ - 10};
-    float i = w.get_time();
+    float i = - w.get_time();
     int mnt = i / 60;
     int hr = mnt / 60;
-    float bogen = - (((2 * M_PI) / 12) * hr);
+    float bogen = (((2 * M_PI) / 12) * hr);
     Vec2 rotation = make_rotation_mat2(bogen) * turnit;
-    res.x = rotation.x + center_.x;
-    res.y = rotation.y + center_.y;
+    res.x = - rotation.x + center_.x;
+    res.y = - rotation.y + center_.y;
     w.draw_line(center_.x, center_.y, res.x, res.y, 0, 1, 0);
 }
 
