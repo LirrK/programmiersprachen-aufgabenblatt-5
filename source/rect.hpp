@@ -10,7 +10,7 @@ class Rect {
         Rect() :
             min_{0, 0},
             max_{1, 1},
-            color_{256, 0, 0}
+            color_{255, 0, 0}
         {}
 
         Rect(Vec2 const& v1, Vec2 const& v2, Color const& rgb) :

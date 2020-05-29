@@ -11,22 +11,14 @@ float Rect::circumference() const {
     return res;
 }
 
-void Rect::draw(Window const& w, bool highlight = true) const {
-    w.draw_line(min_.x, min_.y, min_.x, max_.y, color_.r, color_.g, color_.b);
-    w.draw_line(min_.x, max_.y, max_.x, max_.y, color_.r, color_.g, color_.b);
-    w.draw_line(max_.x, max_.y, max_.x, min_.y, color_.r, color_.g, color_.b);
-    w.draw_line(max_.x, min_.y, min_.x, min_.y, color_.r, color_.g, color_.b);
-}
 
 void Rect::draw(Window const& w, float thickness, bool highlight = true) const {
-    float j = 1 + thickness;
-    for (int i = 0; i < j; i++) {
-        w.draw_line((min_.x - i), (min_.y - i), (min_.x - i), (max_.y + i), color_.r, color_.g, color_.b);
-        w.draw_line((min_.x - i), (max_.y + i), (max_.x + i), (max_.y + i), color_.r, color_.g, color_.b);
-        w.draw_line((max_.x + i), (max_.y + i), (max_.x + i), (min_.y - i), color_.r, color_.g, color_.b);
-        w.draw_line((max_.x + i), (min_.y - i), (min_.x - i), (min_.y - i), color_.r, color_.g, color_.b);
-    }
+    w.draw_line(min_.x, min_.y, min_.x, max_.y, color_.r, color_.g, color_.b, thickness);
+    w.draw_line(min_.x, max_.y, max_.x, max_.y, color_.r, color_.g, color_.b, thickness);
+    w.draw_line(max_.x, max_.y, max_.x, min_.y, color_.r, color_.g, color_.b, thickness);
+    w.draw_line(max_.x, min_.y, min_.x, min_.y, color_.r, color_.g, color_.b, thickness);
 }
+
 
 bool Rect::is_inside(Vec2 const& v) const {
     bool itis = false;
