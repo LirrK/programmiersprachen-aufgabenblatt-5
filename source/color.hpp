@@ -2,9 +2,9 @@
 #define COLOR_HPP
 
 struct Color {
-    float r{192};
-    float g{192};
-    float b{192};
+    float r{1};
+    float g{1};
+    float b{1};
 };
 
 #endif
