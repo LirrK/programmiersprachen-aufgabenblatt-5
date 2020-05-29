@@ -9,7 +9,7 @@
 #include <cmath>
 
 
-int main(int argc, char* argv[])
+int main()
 {
     Window win{std::make_pair(800,800)};
 
@@ -20,7 +20,8 @@ int main(int argc, char* argv[])
         Color black{0, 0, 0};
         Vec2 ctr{400, 400};
         Circle clock{ctr, 100, black};
-        clock.draw(win, 1);
+
+        clock.draw(win, 0.1f, 1);
         clock.drawSec(win);
         clock.drawMin(win);
         clock.drawHr(win);
