@@ -1,0 +1,25 @@
+Aufgabe 4.1
+
+In sequentiellen Containern hängt die Position der Elemente
+vom Zeitpunkt (push_back(3), push_back(4) -> 3 kommt vor 4) und dem
+Ort (push_back -> Ende, push_front -> Anfang) ab.
+In assoziativen Containern gibt es ein Kriterium nach dem sortiert wird.
+Alphabetisch aufsteigend z.B.
+
+FIFO-Warteschlange von Druckaufträgen:
+  Queue; sequentiell; Position der Elemente ist zeitabhängig.
+
+Zuordnung von Farbnamen und entsprechenden RGB-Werten:
+  Pair, Map, Set; assoziativ; Ordnung der Elemente ist zwar nicht gegeben,
+  aber eine Ordnung nach Eindügedatum macht hier keinen Sinn.
+
+Speichern der Punkte eines Polygons:
+  Man würde die Elemente eigentlich in einem Vector Speichern. Vectoren sind
+  sequentielle Container.
+_______________________________________________________________________________
+
+Aufgabe 4.4
+
+std::map benutzt den ersten Parameter als key. Da der Name eines Studierenden
+aber kein eindeutiger key ist (Fall: es gibt zwei Studierende die Fred Fuchs
+heißen), kann es bei 
