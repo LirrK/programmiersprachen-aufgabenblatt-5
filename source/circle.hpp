@@ -30,6 +30,10 @@ class Circle {
 
         bool is_inside(Vec2 const& v) const;
         bool is_inside(Window const& w) const;
+
+        bool operator<(Circle const& rhs) const;
+        bool operator>(Circle const& rhs) const;
+        bool operator==(Circle const& rhs) const;
     private:
         Vec2 center_;
         float radius_;

@@ -25,7 +25,8 @@ Vec2& Vec2::operator*=(float s) {
 
 Vec2& Vec2::operator/=(float s) {
     if (s == 0) {
-        throw std::invalid_argument("Division by 0");
+        //throw std::invalid_argument("Division by 0");
+    	return *this;
     }
     x /= s;
     y /= s;

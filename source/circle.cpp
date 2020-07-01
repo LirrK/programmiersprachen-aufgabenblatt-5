@@ -86,3 +86,24 @@ bool Circle::is_inside(Window const& w) const {
     }
     return isit;
 };
+
+bool Circle::operator<(Circle const& rhs) const {
+  if(radius_ < rhs.radius_) {
+    return true;
+  }
+  return false;
+}
+
+bool Circle::operator>(Circle const& rhs) const {
+  if(radius_ > rhs.radius_) {
+    return true;
+  }
+  return false;
+}
+
+bool Circle::operator==(Circle const& rhs) const {
+  if(radius_ == rhs.radius_) {
+    return true;
+  }
+  return false;
+}

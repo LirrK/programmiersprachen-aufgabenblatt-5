@@ -5,6 +5,7 @@
 #include "rect.hpp"
 #include "circle.hpp"
 
+
 TEST_CASE("Vec initialisation, [Vec2]") {
   Vec2 def;
   Vec2 v1{5.1f, -9.3f};
@@ -118,6 +119,7 @@ TEST_CASE("Shape circumference, [Circle/Rect]") {
   REQUIRE(rect == 4);
   REQUIRE(circ == Approx(6.28319f));
 }
+
 
 int main(int argc, char *argv[])
 {
