@@ -75,3 +75,20 @@ target_link_libraries(aufgabe_5
   nanovg
   ${OPENGL_LIBRARIES}
   )
+
+# Build aufgabe_2_und_3
+add_executable(aufgabe_2_und_3
+  aufgabe_2_und_3.cpp
+  glew.c
+  vec2.cpp
+  mat2.cpp
+  rect.cpp
+  circle.cpp
+  window.cpp
+  )
+target_link_libraries(aufgabe_2_und_3
+  glfw
+  ${GLFW_LIBRARIES}
+  nanovg
+  ${OPENGL_LIBRARIES}
+  )
