@@ -9,6 +9,7 @@
 #include <iostream>
 #include <vector>
 #include <set>
+#include <map>
 
 int main(/*int argc, char *argv[]*/) {
   // Fill vector v with random numbers between 0 and 100
@@ -36,7 +37,16 @@ int main(/*int argc, char *argv[]*/) {
       std::cout << i << std::endl;
     }
   }
+  /*
+  std::map<unsigned int, unsigned int> map;
+  for(unsigned int i = 0; i < 100; ++i) {
+    map.insert(i);
+  }
+  for(unsigned int i = 0; i < 100; ++i) {
+    map.at(v[i]) = map.at(v[i]) + 1;
+  }
 
   return 0;
   //return Catch::Session().run(argc, argv);
+  */
 }
