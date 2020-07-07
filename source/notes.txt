@@ -22,4 +22,6 @@ Aufgabe 4.4
 
 std::map benutzt den ersten Parameter als key. Da der Name eines Studierenden
 aber kein eindeutiger key ist (Fall: es gibt zwei Studierende die Fred Fuchs
-heißen), kann es bei 
+heißen), kann es keine eindeutigen Operationen auf Basis des Namens geben.
+
+Vermeiden: Matrikelnummer als key nehmen.
